@@ -15,16 +15,27 @@ A aplicação devera informar os status do procedimento de reparo, notificando o
  - Acompanhar com detalhes cada uma das ordens de serviço
 
 Para o banco de dados havera uma estrutura simples de collections
- clientes{
-    "nome": String,
-    "rg": String,
-    "cpf": String,
-    "telefone": String,
-    "email": String,
-    "usuario": String,
-    "senha": String
- }
 
- servicos{
-     
- }
+   clientes{
+      "nome": String,
+      "rg": String,
+      "cpf": String,
+      "telefone": String,
+      "email": String,
+      "usuario": String,
+      "senha": String
+   }
+
+   servicos{
+      "descricao": String,
+      "cliente": String,
+      "dataEmicao": date,
+      "valor": number,
+      "status": String
+   }
+
+   orcamento{
+      "descricao": String,
+      "cliente": String,
+      "aprovacao": boolean
+   }

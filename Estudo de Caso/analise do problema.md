@@ -16,7 +16,9 @@ A aplicação devera informar os status do procedimento de reparo, notificando o
 
 Para o banco de dados havera uma estrutura simples de collections
 
-   clientes{
+Clientes:
+
+	clientes{
       "nome": String,
       "rg": String,
       "cpf": String,
@@ -24,18 +26,20 @@ Para o banco de dados havera uma estrutura simples de collections
       "email": String,
       "usuario": String,
       "senha": String
-   }
+    }
+Serviços:
 
-   servicos{
+	servicos{
       "descricao": String,
       "cliente": String,
       "dataEmicao": date,
       "valor": number,
       "status": String
-   }
+    }
+Orçamento:
 
-   orcamento{
+	orcamento{
       "descricao": String,
       "cliente": String,
       "aprovacao": boolean
-   }
+    }

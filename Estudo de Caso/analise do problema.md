@@ -11,8 +11,10 @@ A aplicação devera informar os status do procedimento de reparo, notificando o
  - Solicitar aprovação do cliente para o orcamento
 
 #### Para APP
+ - Conectar-se com o sistema
  - Visuaplizar historico de serviços prestados
  - Acompanhar com detalhes cada uma das ordens de serviço
+ - Aprovar o orçamento
 
 Para o banco de dados havera uma estrutura simples de collections
 
@@ -27,6 +29,17 @@ Clientes:
       "usuario": String,
       "senha": String
     }
+Funcionários:
+
+	funcionarios{
+      "nome": String,
+      "rg": String,
+      "cpf": String,
+      "telefone": String,
+      "email": String,
+      "usuario": String,
+      "senha": String
+    }    
 Serviços:
 
 	servicos{

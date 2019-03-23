@@ -44,7 +44,13 @@ Serviços:
 
 	servicos{
       "descricao": String,
+      "itens":{
+        "descricao": String,
+        "quantidade": number,
+        "valor": number
+      },
       "cliente": String,
+      "funcionario": String,
       "dataEmicao": date,
       "valor": number,
       "status": String
@@ -53,6 +59,12 @@ Orçamento:
 
 	orcamento{
       "descricao": String,
+      "itens":{
+        "descricao": String,
+        "quantidade": number,
+        "valor": number
+      },
       "cliente": String,
+      "funcionario": String,
       "aprovacao": boolean
     }

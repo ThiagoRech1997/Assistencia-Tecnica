@@ -1,7 +1,7 @@
-# Caracterização do problema
+### Caracteristicas do problema
 A aplicação devera informar os status do procedimento de reparo, notificando o cliente sempre que há alguma alteração.
 
-### Caracteristicas do problema
+### Requisitos do sistema
 
 #### Para API
  - Cadastrar previamente o cliente

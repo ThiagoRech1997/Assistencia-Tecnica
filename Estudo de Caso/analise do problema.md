@@ -1,7 +1,7 @@
-# Andamento da manutenção
+### Caracteristicas do problema
 A aplicação devera informar os status do procedimento de reparo, notificando o cliente sempre que há alguma alteração.
 
-### Caracteristicas do problema
+### Requisitos do sistema
 
 #### Para API
  - Cadastrar previamente o cliente
@@ -11,6 +11,7 @@ A aplicação devera informar os status do procedimento de reparo, notificando o
  - Solicitar aprovação do cliente para o orcamento
 
 #### Para APP
+ - Solicitar um cadastro no sistema
  - Conectar-se com o sistema
  - Visuaplizar historico de serviços prestados
  - Acompanhar com detalhes cada uma das ordens de serviço
@@ -22,7 +23,6 @@ Clientes:
 
 	clientes{
       "nome": String,
-      "rg": String,
       "cpf": String,
       "telefone": String,
       "email": String,
@@ -33,7 +33,6 @@ Funcionários:
 
 	funcionarios{
       "nome": String,
-      "rg": String,
       "cpf": String,
       "telefone": String,
       "email": String,

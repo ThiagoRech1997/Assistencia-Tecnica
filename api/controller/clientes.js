@@ -20,3 +20,8 @@ exports.post = (req, res) => {
         res.json(response);
     });
 };
+exports.get = (req, res) => {
+    res.render('clientes', {
+        title: "Clientes"
+    });
+};

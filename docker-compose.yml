@@ -14,6 +14,20 @@ services:
       - mongodb
     depends_on:
       - mongodb
+
+  front:
+    image: "api-front"
+    build: ./front
+    command: npm start
+    restart: always
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./front:/usr/app
+    links:
+      - api
+    depends_on:
+      - api    
   
   mongodb:
     image: mongo:latest

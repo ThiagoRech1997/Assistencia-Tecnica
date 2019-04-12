@@ -12,7 +12,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var clienteRouter = require('./routes/clientes');
 
-mongoose.connect('mongodb://10.51.240.109:27017/assistencia-tecnica', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/assistencia-tecnica', { useNewUrlParser: true });
 
 var app = express();
 

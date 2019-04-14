@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import "./styles.css";
 
-const Body = () => (
-    <header id="main-body">Telas</header>
-);
+import CadastroCliente from "../../pages/cliente/Cadastro";
+
+class Body extends Component {
+
+    render() {
+        return (
+            <div>
+               {this.props.pagina}
+               <CadastroCliente />
+            </div>
+        );
+    }
+}
 
 export default Body;

@@ -18,7 +18,7 @@ services:
   front:
     image: "api-front"
     build: ./front
-    command: npm start
+    command: yarn start
     restart: always
     ports:
       - "3000:3000"

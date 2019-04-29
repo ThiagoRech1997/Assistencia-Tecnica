@@ -1,9 +1,10 @@
-version: '3'
+version: "3"
 
 services:
   api:
     image: "node-api"
     build: ./api
+    container_name: "API"
     command: npm start
     restart: always
     ports:
@@ -18,6 +19,7 @@ services:
   front:
     image: "api-front"
     build: ./front
+    container_name: "React"
     command: yarn start
     restart: always
     ports:
@@ -27,10 +29,11 @@ services:
     links:
       - api
     depends_on:
-      - api    
-  
+      - api
+
   mongodb:
     image: mongo:latest
+    container_name: "MongoDB"
     restart: always
     ports:
       - "27017:27017"

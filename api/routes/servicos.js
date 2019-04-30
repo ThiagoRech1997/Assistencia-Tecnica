@@ -7,5 +7,7 @@ const controller = require("./../controller/servicos");
 router.post("/", controller.post);
 router.get("/", controller.get);
 router.get("/:id", controller.getById);
+router.put("/:id", controller.put);
+router.delete("/:id", controller.delete);
 
 module.exports = router;

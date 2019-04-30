@@ -15,7 +15,7 @@ var funcionarioRoute = require("./routes/funcionarios");
 var servicoRoute = require("./routes/servicos");
 var orcamentoRoute = require("./routes/orcamentos");
 
-mongoose.connect("mongodb://192.168.0.111:27017/assistencia-tecnica", {
+mongoose.connect("mongodb://172.27.8.225:27017/assistencia-tecnica", {
   useNewUrlParser: true
 });
 

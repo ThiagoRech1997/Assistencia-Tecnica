@@ -32,11 +32,51 @@ exports.get = (req, res) => {
     });
 };
 exports.getById = (req, res) => {
-  Orcamentos.findById(req.params.id)
+  Orcamentos.findOne(req.params.id)
     .then(data => {
       res.status(200).send(data);
     })
     .catch(e => {
       res.status(400).send(e);
+    });
+};
+exports.put = (req, res, next) => {
+  Orcamentos.findOneAndUpdate(req.params.id, {
+    $set: {
+      descricao: req.body.descricao,
+      itens: {
+        descricao: req.body.itens.descricao,
+        quantidade: req.body.quantidade,
+        valor: req.body.valor
+      },
+      cliente: req.body.cliente,
+      funcionario: req.body.funcionario,
+      aprovacao: req.body.aprovacao
+    }
+  })
+    .then(x => {
+      res.status(201).send({
+        message: "Atualizado com sucesso"
+      });
+    })
+    .catch(e => {
+      res.status(400).send({
+        message: "Falha ao atualizar",
+        data: e
+      });
+    });
+};
+exports.delete = (req, res, next) => {
+  Orcamentos.findOneAndRemove(req.body.id)
+    .then(x => {
+      res.status(200).send({
+        message: "Removido com sucesso"
+      });
+    })
+    .catch(e => {
+      res.status(400).send({
+        message: "Falha ao remover",
+        data: e
+      });
     });
 };

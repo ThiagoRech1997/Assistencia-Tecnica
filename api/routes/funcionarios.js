@@ -6,5 +6,6 @@ const controller = require("./../controller/funcionarios");
 
 router.post("/", controller.post);
 router.get("/", controller.get);
+router.get("/:id", controller.getById);
 
 module.exports = router;

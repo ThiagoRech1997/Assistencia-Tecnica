@@ -33,3 +33,12 @@ exports.get = (req, res) => {
       res.status(400).send(e);
     });
 };
+exports.getById = (req, res) => {
+  Servicos.findById(req.params.id)
+    .then(data => {
+      res.status(200).send(data);
+    })
+    .catch(e => {
+      res.status(400).send(e);
+    });
+};

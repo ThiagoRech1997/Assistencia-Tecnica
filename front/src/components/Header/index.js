@@ -1,59 +1,41 @@
 import React, {Component} from 'react';
 
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Navbar from 'react-bootstrap/Navbar';
 
 
 import "./styles.css";
 
 class Header extends Component {
-  state = {
-    anchorEl: null,
-  };
-
-  handleClick = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
-
   render() {
-    const { anchorEl } = this.state;
 
     return (
-      <div id="main-header">
-        <Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={this.handleClick}>Clientes</Button>
-        <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={this.handleClose} >
-          <MenuItem onClick={this.handleClose}>Cadastrar</MenuItem>
-          <MenuItem onClick={this.handleClose}>Buscar</MenuItem>
-          <MenuItem onClick={this.handleClose}>Alterar</MenuItem>
-          <MenuItem onClick={this.handleClose}>Deletar</MenuItem>
-        </Menu>
-        <Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={this.handleClick}>Funcionarios</Button>
-        <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={this.handleClose} >
-          <MenuItem onClick={this.handleClose}>Cadastrar</MenuItem>
-          <MenuItem onClick={this.handleClose}>Buscar</MenuItem>
-          <MenuItem onClick={this.handleClose}>Alterar</MenuItem>
-          <MenuItem onClick={this.handleClose}>Deletar</MenuItem>
-        </Menu>
-        <Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={this.handleClick}>Orcamento</Button>
-        <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={this.handleClose} >
-          <MenuItem onClick={this.handleClose}>Cadastrar</MenuItem>
-          <MenuItem onClick={this.handleClose}>Buscar</MenuItem>
-          <MenuItem onClick={this.handleClose}>Alterar</MenuItem>
-          <MenuItem onClick={this.handleClose}>Deletar</MenuItem>
-        </Menu>
-        <Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={this.handleClick}>Orden de Servico</Button>
-        <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={this.handleClose} >
-          <MenuItem onClick={this.handleClose}>Cadastrar</MenuItem>
-          <MenuItem onClick={this.handleClose}>Buscar</MenuItem>
-          <MenuItem onClick={this.handleClose}>Alterar</MenuItem>
-          <MenuItem onClick={this.handleClose}>Deletar</MenuItem>
-        </Menu>
-      </div>
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="#home">Assistencia Tecnica</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <NavDropdown title="Clientes" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Cadastrar</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Procurar</NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Funcionarios" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Cadastrar</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Procurar</NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Servicos" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Cadastrar</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Procurar</NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Orcamentos" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Cadastrar</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Procurar</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }

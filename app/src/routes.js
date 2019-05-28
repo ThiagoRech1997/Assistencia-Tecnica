@@ -2,10 +2,17 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 
 import Main from "./pages/main";
 
-const Rotas = createStackNavigator({
-    Main,
+var Rotas = createStackNavigator({
+    Main
+}, {
+    defaultNavigationOptions: {
+        headerStyle: {
+            backgroundColor: "#DA552F"
+        },
+        headerTintColor: "#FFF"
+    },
 });
 
-const App = createAppContainer(Rotas);
+var App = createAppContainer(Rotas);
 
 export default App;

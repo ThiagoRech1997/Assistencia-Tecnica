@@ -1,34 +1,40 @@
 import React , { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import api from "../services/api";
 
 export default class Main extends Component {
-  static navigationOptions = {
-    title: "Assistencia"    
-  };
+    static navigationOptions = {
+      title: "Assistencia"    
+    };
 
-  state = {
-    docs: [],
-  };
+    state = {
+      clientes: [],
+      errorMessage: '',
+    };
 
-  componentDidMount() {
-    this.loadClients();
-  }
+    componentDidMount() {
+      this.loadClients();
+    }
 
-  loadClients = async () => {
-    const response = await api.get("/clientes");
-    const { docs } = response.data;
-    console.log(response.data);
+    loadClients = async () => {
+        const response = await api.get('/clientes');
+        const { clientes } = response.data;
+        this.setState({ clientes });
+    };
 
-    this.setState({ docs });
-  };
+    renderItem = ({ item }) => (
+      <View>
+        <Text>{item.nome}</Text>
+      </View>
+    );
 
     render() {
       return (
         <View>
-          <Text>Welcome to React Pesadao!</Text>
-          {this.state.docs.map(clientes => (
-            <Text>{clientes.nome}</Text>
+          {this.state.clientes.map(clientes => (
+            <View key={clientes._id}>
+              <Text>{clientes.nome}</Text>
+            </View>
           ))}
         </View>
       );

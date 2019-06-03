@@ -1,6 +1,8 @@
 import React , { Component } from "react";
-import { View, Text, FlatList } from "react-native";
-import api from "../services/api";
+import { View, Text, FlatList, StyleSheet } from "react-native";
+import api from "../../services/api";
+
+//import "./styles.css"
 
 export default class Main extends Component {
     static navigationOptions = {
@@ -23,16 +25,19 @@ export default class Main extends Component {
     };
 
     renderItem = ({ item }) => (
-      <View>
+      <View style={styles.clienteContainer}>
         <Text>{item.nome}</Text>
         <Text>{item.cpf}</Text>
+        <Text>{item.telefone}</Text>
+        <Text>{item.email}</Text>
       </View>
     );
 
     render() {
       return (
-        <View>
+        <View style={styles.container}>
           <FlatList
+            style={styles.lista}
             data={this.state.clientes}
             keyExtractor={item => item._id}
             renderItem={this.renderItem}
@@ -41,3 +46,21 @@ export default class Main extends Component {
       );
     }
   }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fafafa",
+  },
+  lista: {
+    padding: 20
+  },
+  clienteContainer: {
+    backgroundColor: "#FFF",
+    borderWidth: 1,
+    borderColor: "#DDD",
+    borderRadius: 5,
+    padding: 20,
+    marginBottom: 20
+  },
+});

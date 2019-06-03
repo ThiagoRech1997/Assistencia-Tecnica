@@ -14,28 +14,29 @@ export default class Main extends Component {
 
     componentDidMount() {
       this.loadClients();
-    }
+    };
 
     loadClients = async () => {
         const response = await api.get('/clientes');
-        const { clientes } = response.data;
-        this.setState({ clientes });
+        
+        this.setState({ clientes: response.data });
     };
 
     renderItem = ({ item }) => (
       <View>
         <Text>{item.nome}</Text>
+        <Text>{item.cpf}</Text>
       </View>
     );
 
     render() {
       return (
         <View>
-          {this.state.clientes.map(clientes => (
-            <View key={clientes._id}>
-              <Text>{clientes.nome}</Text>
-            </View>
-          ))}
+          <FlatList
+            data={this.state.clientes}
+            keyExtractor={item => item._id}
+            renderItem={this.renderItem}
+          />  
         </View>
       );
     }

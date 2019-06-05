@@ -1,7 +1,16 @@
 "use strict";
 
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const Clientes = require("./../models/clientes");
+const authConfig = require('../config/auth.json');
+
+function generateToken(params = {}){
+  return jwt.sign(params, authConfig.secret, {
+    expiresIn: 86408,
+  });
+}
 
 exports.post = (req, res) => {
   var clientes = new Clientes();
@@ -10,7 +19,6 @@ exports.post = (req, res) => {
   clientes.cpf = req.body.cpf;
   clientes.telefone = req.body.telefone;
   clientes.email = req.body.email;
-  clientes.usuario = req.body.usuario;
   clientes.senha = req.body.senha;
   clientes.save(function(err) {
     if (err) {
@@ -21,6 +29,25 @@ exports.post = (req, res) => {
     res.json(response);
   });
 };
+exports.autenticacao = async (req, res, next) => {
+  const { email, senha } = req.body;
+  const clientes = await Clientes.findOne({ email }).select('+senha');
+
+  if(!clientes){
+    return res.status(400).send({ error: 'Usuario nao encontrado' });
+  }
+  if(!await bcrypt.compare(senha, clientes.senha)){
+    return res.status(400).send({ error: 'Senha Invalida' });
+  }
+
+  clientes.senha = undefined;
+
+  res.send({ 
+    email, 
+    token: generateToken({ id: clientes.id }),
+  });
+};
+
 exports.get = (req, res, next) => {
   Clientes.find({}, "nome cpf telefone email")
     .then(data => {

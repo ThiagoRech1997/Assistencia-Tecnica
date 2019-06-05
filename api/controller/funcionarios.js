@@ -10,7 +10,6 @@ exports.post = (req, res) => {
   funcionarios.cpf = req.body.cpf;
   funcionarios.telefone = req.body.telefone;
   funcionarios.email = req.body.email;
-  funcionarios.usuario = req.body.usuario;
   funcionarios.senha = req.body.senha;
   funcionarios.save(function(err) {
     if (err) {

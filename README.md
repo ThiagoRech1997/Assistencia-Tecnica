@@ -55,8 +55,8 @@ Clientes:
       "cpf": String,
       "telefone": String,
       "email": String,
-      "usuario": String,
-      "senha": String
+      "senha": String,
+      "cadastroDat": Date
     }
 Funcionários:
 
@@ -65,8 +65,8 @@ Funcionários:
       "cpf": String,
       "telefone": String,
       "email": String,
-      "usuario": String,
-      "senha": String
+      "senha": String,
+      "cadastroDat": Date
     }    
 Serviços:
 

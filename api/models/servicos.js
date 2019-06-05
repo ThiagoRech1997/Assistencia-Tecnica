@@ -32,8 +32,8 @@ const schema = new Schema({
     required: true
   },
   dataEmicao: {
-    type: String,
-    required: true
+    type: Date,
+    default: Date.now
   },
   valor: {
     type: Number,

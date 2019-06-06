@@ -29,7 +29,7 @@ exports.post = (req, res) => {
 };
 exports.autenticacao = async (req, res, next) => {
   const { email, senha } = req.body;
-  const users = await users.findOne({ email }).select('+senha');
+  const users = await Users.findOne({ email }).select('+senha');
 
   if(!users){
     return res.status(400).send({ error: 'Usuario nao encontrado' });
@@ -40,9 +40,11 @@ exports.autenticacao = async (req, res, next) => {
 
   users.senha = undefined;
 
-  res.send({ 
+  res.send({
+    nome: users.nome,
     email, 
     token: generateToken({ id: users.id }),
+    tipo: users.tipo,
   });
 };
 

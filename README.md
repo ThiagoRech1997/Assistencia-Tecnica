@@ -98,10 +98,10 @@ Orçamento:
     }
 Usuarios:
 
-  users{
-      "nome": String,
-      "email": String,
-      "senha": String,
-      "tipo": String,
-      "cadastroDat": Date
+	users{
+  	"nome": String,
+     "email": String,
+     "senha": String,
+     "tipo": String,
+     "cadastroDat": Date
     }

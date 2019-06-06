@@ -1,15 +1,24 @@
 "use strict";
 
-const Clientes = require("./../models/clientes");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const Users = require("./../models/users");
+const authConfig = require('../config/auth.json');
+
+function generateToken(params = {}){
+  return jwt.sign(params, authConfig.secret, {
+    expiresIn: 86408,
+  });
+}
 
 exports.post = (req, res) => {
-  var clientes = new Clientes();
+  var users = new Users();
   var response = {};
-  clientes.nome = req.body.nome;
-  clientes.cpf = req.body.cpf;
-  clientes.telefone = req.body.telefone;
-  clientes.email = req.body.email;
-  clientes.save(function(err) {
+  users.nome = req.body.nome;
+  users.email = req.body.email;
+  users.senha = req.body.senha;
+  users.tipo = req.body.tipo;
+  users.save(function(err) {
     if (err) {
       response = { error: true, message: "Erro ao Cadastrar" };
     } else {
@@ -18,9 +27,27 @@ exports.post = (req, res) => {
     res.json(response);
   });
 };
+exports.autenticacao = async (req, res, next) => {
+  const { email, senha } = req.body;
+  const users = await users.findOne({ email }).select('+senha');
+
+  if(!users){
+    return res.status(400).send({ error: 'Usuario nao encontrado' });
+  }
+  if(!await bcrypt.compare(senha, users.senha)){
+    return res.status(400).send({ error: 'Senha Invalida' });
+  }
+
+  users.senha = undefined;
+
+  res.send({ 
+    email, 
+    token: generateToken({ id: users.id }),
+  });
+};
 
 exports.get = (req, res, next) => {
-  Clientes.find({}, "nome cpf telefone email")
+  Users.find({}, "nome email")
     .then(data => {
       res.status(200).send(data);
     })
@@ -29,7 +56,7 @@ exports.get = (req, res, next) => {
     });
 };
 exports.getById = (req, res, next) => {
-  Clientes.findOne(req.params.id, "nome cpf telefone email")
+    Users.findOne(req.params.id, "nome email")
     .then(data => {
       res.status(200).send(data);
     })
@@ -38,11 +65,9 @@ exports.getById = (req, res, next) => {
     });
 };
 exports.put = (req, res, next) => {
-  Clientes.findOneAndUpdate(req.params.id, {
+    Users.findOneAndUpdate(req.params.id, {
     $set: {
       nome: req.body.nome,
-      cpf: req.body.cpf,
-      telefone: req.body.telefone,
       email: req.body.email
     }
   })
@@ -59,7 +84,7 @@ exports.put = (req, res, next) => {
     });
 };
 exports.delete = (req, res, next) => {
-  Clientes.findOneAndRemove(req.body.id)
+    Users.findOneAndRemove(req.body.id)
     .then(x => {
       res.status(200).send({
         message: "Removido com sucesso"

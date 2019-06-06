@@ -1,6 +1,5 @@
 "use strict";
 
-const mongoose = require("mongoose");
 const Servicos = require("./../models/servicos");
 
 exports.post = (req, res) => {
@@ -12,7 +11,6 @@ exports.post = (req, res) => {
   servicos.itens.valor = req.body.itens.valor;
   servicos.cliente = req.body.cliente;
   servicos.funcionario = req.body.funcionario;
-  servicos.dataEmicao = req.body.dataEmicao;
   servicos.valor = req.body.valor;
   servicos.status = req.body.status;
   servicos.save(function(err) {

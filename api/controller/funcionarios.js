@@ -10,7 +10,6 @@ exports.post = (req, res) => {
   funcionarios.cpf = req.body.cpf;
   funcionarios.telefone = req.body.telefone;
   funcionarios.email = req.body.email;
-  funcionarios.senha = req.body.senha;
   funcionarios.save(function(err) {
     if (err) {
       response = { error: true, message: "Erro ao Cadastrar" };

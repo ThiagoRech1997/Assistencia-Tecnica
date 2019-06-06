@@ -1,6 +1,5 @@
 "use strict";
 
-const mongoose = require("mongoose");
 const Orcamentos = require("./../models/orcamentos");
 
 exports.post = (req, res) => {

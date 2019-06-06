@@ -42,6 +42,10 @@ const schema = new Schema({
   status: {
     type: String,
     required: true
+  },
+  cadatroDat: {
+    type: Date,
+    default: Date.now
   }
 });
 

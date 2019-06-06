@@ -34,6 +34,10 @@ const schema = new Schema({
   aprovacao: {
     type: String,
     required: true
+  },
+  cadatroDat: {
+    type: Date,
+    default: Date.now
   }
 });
 

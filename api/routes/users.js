@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+"use strict";
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const express = require("express");
+const router = express.Router();
+const controller = require("./../controller/users");
+
+router.post("/", controller.post);
+router.post("/auth", controller.autenticacao);
+router.get("/", controller.get);
+router.get("/:id", controller.getById);
+router.put("/:id", controller.put);
+router.delete("/:id", controller.delete);
 
 module.exports = router;

@@ -55,7 +55,6 @@ Clientes:
       "cpf": String,
       "telefone": String,
       "email": String,
-      "senha": String,
       "cadastroDat": Date
     }
 Funcionários:
@@ -65,7 +64,6 @@ Funcionários:
       "cpf": String,
       "telefone": String,
       "email": String,
-      "senha": String,
       "cadastroDat": Date
     }    
 Serviços:
@@ -79,9 +77,10 @@ Serviços:
       },
       "cliente": String,
       "funcionario": String,
-      "dataEmicao": date,
+      "dataEmicao": Date,
       "valor": number,
-      "status": String
+      "status": String,
+      "cadastroDat": Date
     }
 Orçamento:
 
@@ -94,5 +93,15 @@ Orçamento:
       },
       "cliente": String,
       "funcionario": String,
-      "aprovacao": boolean
+      "aprovacao": boolean,
+      "cadastroDat": Date
     }
+Usuarios:
+
+  users{
+      "nome": String,
+      "email": String,
+      "senha": String,
+      "tipo": String,
+      "cadastroDat": Date
+  }

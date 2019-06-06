@@ -3,7 +3,9 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("./../controller/funcionarios");
+const authMiddleware = require("../middlewares/auth");
 
+router.use(authMiddleware);
 router.post("/", controller.post);
 router.get("/", controller.get);
 router.get("/:id", controller.getById);

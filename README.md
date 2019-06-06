@@ -104,4 +104,4 @@ Usuarios:
       "senha": String,
       "tipo": String,
       "cadastroDat": Date
-  }
+    }

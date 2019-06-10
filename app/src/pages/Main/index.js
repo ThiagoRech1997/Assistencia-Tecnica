@@ -2,8 +2,6 @@ import React , { Component } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import api from "../../services/api";
 
-//import "./styles.css"
-
 export default class Main extends Component {
     static navigationOptions = {
       title: "Assistencia"    

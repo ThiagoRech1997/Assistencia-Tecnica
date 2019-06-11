@@ -17,27 +17,29 @@ export default class Login extends Component {
     projects: [],
   };
 
+  
   signIn = async () => {
     try {
       const response = await api.post('/users/auth', {
-        email: 'thiagorech.1997@gmail.com',
-        password: '123456',
-      });
-
-      const { token, nome } = response.data;
-
+        email:"thiagorech.1997@gmail.com",
+        senha:"123456",
+      },{
+        headers: { 'Content-Type': 'application/json' }
+      }).catch(error =>{
+        console.log(error);
+      }); 
       await AsyncStorage.multiSet([
-        ['@CodeApi:token', token],
-        ['@CodeApi:nome', JSON.stringify(nome)],
+        ['@CodeApi:token', response.data.token],
+        ['@CodeApi:user', JSON.stringify(response.data.nome)],
       ]);
 
-      this.setState({ loggedInUser: nome });
+      this.setState({ loggedInUser: response.data.nome }); 
 
       Alert.alert('Logado com sucesso!');
     } catch (err) {
       this.setState({ errorMessage: err.data.error });
     }
-  };
+  }; 
 
   getProjectList = async () => {
     try {

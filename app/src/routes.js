@@ -4,7 +4,8 @@ import Main from "./pages/Main";
 import Login from "./pages/Login";
 
 var Rotas = createStackNavigator({
-    Login
+    Login,
+    Main
 }, {
     defaultNavigationOptions: {
         headerStyle: {

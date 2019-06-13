@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from "../../services/api";
+import './../../routes';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import {
@@ -11,12 +12,16 @@ import {
 } from 'react-native';
 
 export default class Login extends Component {
+  static navigationOptions = {
+    title: "Login"    
+  };
+
   state = {
     loggedInUser: null,
     errorMessage: '',
-    projects: [],
+    email: null,
+    senha: null
   };
-
   
   signIn = async () => {
     try {
@@ -30,7 +35,7 @@ export default class Login extends Component {
       }); 
       await AsyncStorage.multiSet([
         ['@CodeApi:token', response.data.token],
-        ['@CodeApi:user', JSON.stringify(response.data.nome)],
+        ['@CodeApi:nome', JSON.stringify(response.data.nome)],
       ]);
 
       this.setState({ loggedInUser: response.data.nome }); 
@@ -39,26 +44,23 @@ export default class Login extends Component {
     } catch (err) {
       this.setState({ errorMessage: err.data.error });
     }
+    this.props.navigation.navigate('Main')
   }; 
 
-  getProjectList = async () => {
-    try {
-      const response = await api.get('/clientes');
-
-      const { clientes } = response.data;
-
-      this.setState({ clientes });
-    } catch (err) {
-      this.setState({ errorMessage: err.data.error });
-    }
+  signOut = async () => {
+    await AsyncStorage.clear();
+    this.setState({ 
+      loggedInUser: null,
+      errorMessage: '',
+      email: null,
+      senha: null,
+    });
+    Alert.alert('Desconectado');
   };
 
   async componentDidMount() {
-    await AsyncStorage.clear();
-
-    const token = await AsyncStorage.getItem('@CodeApi:token');
-    const nome = JSON.parse(await AsyncStorage.getItem('@CodeApi:nome')) || null;
-
+    var token = await AsyncStorage.getItem('@CodeApi:token');
+    var nome = JSON.parse(await AsyncStorage.getItem('@CodeApi:nome')) || null;
     if (token && nome) 
       this.setState({ loggedInUser: nome });
   }
@@ -66,17 +68,13 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
-        { !!this.state.errorMessage && <Text>{this.state.errorMessage}</Text> }
-        { this.state.loggedInUser
-          ? <Button onPress={this.getProjectList} title="Carregar projetos" />
-          : <Button onPress={this.signIn} title="Entrar" /> }
+        { !!this.state.loggedInUser && <Text>{ this.state.loggedInUser }</Text> }
+        { !!this.state.errorMessage && <Text>{ this.state.errorMessage }</Text> }
+        { this.state.loggedInUser 
+          ? <Button onPress={ this.signOut } title="Sair" />
+          : <Button onPress={ this.signIn } title="Entrar" /> 
+        }
 
-        { this.state.projects.map(project => (
-          <View key={project._id} style={{ marginTop: 15 }}>
-            <Text style={{ fontWeight: 'bold' }}>{project.title}</Text>
-            <Text>{project.description}</Text>
-          </View>
-        ))}
       </View>
     );
   }
@@ -88,5 +86,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
+  }, 
 });

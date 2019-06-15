@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {
   StyleSheet,
   Text,
+  TextInput,
   View,
   Button,
   Alert
@@ -19,15 +20,15 @@ export default class Login extends Component {
   state = {
     loggedInUser: null,
     errorMessage: '',
-    email: null,
-    senha: null
+    email: '',
+    senha: ''
   };
   
   signIn = async () => {
     try {
       const response = await api.post('/users/auth', {
-        email:"thiagorech.1997@gmail.com",
-        senha:"123456",
+        email:this.state.email,
+        senha:this.state.senha,
       },{
         headers: { 'Content-Type': 'application/json' }
       }).catch(error =>{
@@ -52,11 +53,12 @@ export default class Login extends Component {
     this.setState({ 
       loggedInUser: null,
       errorMessage: '',
-      email: null,
       senha: null,
     });
     Alert.alert('Desconectado');
   };
+
+  menu = () => { this.props.navigation.navigate('Main') };
 
   async componentDidMount() {
     var token = await AsyncStorage.getItem('@CodeApi:token');
@@ -71,10 +73,28 @@ export default class Login extends Component {
         { !!this.state.loggedInUser && <Text>{ this.state.loggedInUser }</Text> }
         { !!this.state.errorMessage && <Text>{ this.state.errorMessage }</Text> }
         { this.state.loggedInUser 
-          ? <Button onPress={ this.signOut } title="Sair" />
-          : <Button onPress={ this.signIn } title="Entrar" /> 
+          ? <View>
+              <Button onPress={ this.menu } title="Inicio" />
+              <Button onPress={ this.signOut } title="Sair" />
+            </View>
+          : <View>
+              <TextInput 
+                style={styles.textImput}
+                placeholder="E-mail"
+                onChangeText={(email) => this.setState({email})}
+                value={this.state.email}
+                textContentType="emailAddress"
+              />
+              <TextInput 
+                style={styles.textImput} 
+                placeholder="Password"
+                onChangeText={(senha) => this.setState({senha})}
+                secureTextEntry={true}
+                textContentType="password"
+              />
+              <Button onPress={ this.signIn } title="Entrar" />
+            </View> 
         }
-
       </View>
     );
   }
@@ -87,4 +107,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   }, 
+  textImput: {
+    height: 50,
+    width: 200,
+  },
 });

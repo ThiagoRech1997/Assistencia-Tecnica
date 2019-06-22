@@ -88,7 +88,7 @@ Serviços:
       "status": String,
       "cadastroDat": Date
     }
-Orçamento:
+Orçamento: 
 
 	orcamento{
       "descricao": String,

@@ -75,8 +75,14 @@ Serviços:
         "quantidade": number,
         "valor": number
       },
-      "cliente": String,
-      "funcionario": String,
+      cliente: {
+        "nome": String,
+        "email": String
+      },
+      funcionario: {
+        "nome": String,
+        "email": String
+      },
       "dataEmicao": Date,
       "valor": number,
       "status": String,
@@ -91,8 +97,14 @@ Orçamento:
         "quantidade": number,
         "valor": number
       },
-      "cliente": String,
-      "funcionario": String,
+      cliente: {
+        "nome": String,
+        "email": String
+      },
+      funcionario: {
+        "nome": String,
+        "email": String
+      },
       "aprovacao": boolean,
       "cadastroDat": Date
     }

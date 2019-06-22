@@ -9,8 +9,10 @@ exports.post = (req, res) => {
   servicos.itens.descricao = req.body.itens.descricao;
   servicos.itens.quantidade = req.body.itens.quantidade;
   servicos.itens.valor = req.body.itens.valor;
-  servicos.cliente = req.body.cliente;
-  servicos.funcionario = req.body.funcionario;
+  servicos.cliente.nome = req.body.cliente.nome;
+  servicos.cliente.email = req.body.cliente.email;
+  servicos.funcionario.nome = req.body.funcionario.nome;
+  servicos.funcionario.email = req.body.funcionario.email;
   servicos.valor = req.body.valor;
   servicos.status = req.body.status;
   servicos.save(function(err) {
@@ -49,8 +51,14 @@ exports.put = (req, res, next) => {
         quantidade: req.body.quantidade,
         valor: req.body.valor
       },
-      cliente: req.body.cliente,
-      funcionario: req.body.funcionario,
+      cliente: {
+        nome: req.body.cliente.nome,
+        email: req.body.cliente.email,
+      },
+      funcionario: {
+        nome: req.body.funcionario.nome,
+        email: req.body.funcionario.email,
+      },
       valor: req.body.valor,
       status: req.body.status
     }

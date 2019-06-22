@@ -24,12 +24,24 @@ const schema = new Schema({
     }
   },
   cliente: {
-    type: String,
-    required: true
+    nome: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true
+    }
   },
   funcionario: {
-    type: String,
-    required: true
+    nome: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true
+    }
   },
   aprovacao: {
     type: String,

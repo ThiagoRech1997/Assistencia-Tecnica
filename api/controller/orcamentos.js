@@ -9,8 +9,10 @@ exports.post = (req, res) => {
   orcamentos.itens.descricao = req.body.itens.descricao;
   orcamentos.itens.quantidade = req.body.itens.quantidade;
   orcamentos.itens.valor = req.body.itens.valor;
-  orcamentos.cliente = req.body.cliente;
-  orcamentos.funcionario = req.body.funcionario;
+  orcamentos.cliente.nome = req.body.cliente.nome;
+  orcamentos.cliente.email = req.body.cliente.email;
+  orcamentos.funcionario.nome = req.body.funcionario.nome;
+  orcamentos.funcionario.email = req.body.funcionario.email;
   orcamentos.aprovacao = req.body.aprovacao;
   orcamentos.save(function(err) {
     if (err) {
@@ -48,8 +50,14 @@ exports.put = (req, res, next) => {
         quantidade: req.body.quantidade,
         valor: req.body.valor
       },
-      cliente: req.body.cliente,
-      funcionario: req.body.funcionario,
+      cliente: {
+        nome: req.body.cliente.nome,
+        email: req.body.cliente.email,
+      },
+      funcionario: {
+        nome: req.body.funcionario.nome,
+        email: req.body.funcionario.email,
+      },
       aprovacao: req.body.aprovacao
     }
   })

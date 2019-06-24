@@ -60,6 +60,8 @@ export default class Login extends Component {
 
   menu = () => { this.props.navigation.navigate('Main') };
 
+  cadastro = () => { this.props.navigation.navigate('Cadastro') };
+
   async componentDidMount() {
     var token = await AsyncStorage.getItem('@CodeApi:token');
     var nome = JSON.parse(await AsyncStorage.getItem('@CodeApi:nome')) || null;
@@ -93,6 +95,8 @@ export default class Login extends Component {
                 textContentType="password"
               />
               <Button onPress={ this.signIn } title="Entrar" />
+              
+              <Button onPress={ this.cadastro } title="Cadastrar-se" />
             </View> 
         }
       </View>

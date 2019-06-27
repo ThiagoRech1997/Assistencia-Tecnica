@@ -10,6 +10,7 @@ router.post("/", controller.post);
 router.get("/", controller.get);
 router.get("/:id", controller.getById);
 router.put("/:id", controller.put);
+router.put("/aprovacao", controller.aprovacao);
 router.delete("/:id", controller.delete);
 
 module.exports = router;

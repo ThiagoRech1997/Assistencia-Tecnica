@@ -73,6 +73,24 @@ exports.put = (req, res, next) => {
       });
     });
 };
+exports.aprovacao = (req, res, next) => {
+  Orcamentos.findOneAndUpdate(req.params.id, {
+    $set: {
+      aprovacao: req.body.aprovacao
+    }
+  })
+    .then(x => {
+      res.status(201).send({
+        message: "Atualizado com sucesso"
+      });
+    })
+    .catch(e => {
+      res.status(400).send({
+        message: "Falha ao atualizar",
+        data: e
+      });
+    });
+};
 exports.delete = (req, res, next) => {
   Orcamentos.findOneAndRemove(req.body.id)
     .then(x => {

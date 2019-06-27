@@ -4,13 +4,14 @@ import './../../routes';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import {
-  StyleSheet,
   Text,
   TextInput,
   View,
   Button,
   Alert
 } from 'react-native';
+
+import styles from './styles';
 
 export default class Login extends Component {
   static navigationOptions = {
@@ -104,15 +105,4 @@ export default class Login extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  }, 
-  textImput: {
-    height: 50,
-    width: 200,
-  },
-});
+

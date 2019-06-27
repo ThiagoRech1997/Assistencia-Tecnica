@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 
-import { View } from 'react-native';
+import { 
+  View,
+  Text, 
+  FlatList,
+} from 'react-native';
 
-// import { Container } from './styles';
+import styles from './styles';
 
 export default class Servicos extends Component {
   render() {
-    return <View />;
+    return (
+      <View>
+        <FlatList />
+      </View>
+    );
   }
 }

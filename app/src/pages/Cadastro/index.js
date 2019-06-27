@@ -36,10 +36,11 @@ export default class Cadastro extends Component {
     console.log(await AsyncStorage.getItem('@CodeApi:token'));
   };
 
-  cadastrar = () => {
+  cadastrar = async () => {
     this.getToken();
     this.cadUser();
     this.cadCliente();
+    await AsyncStorage.clear();
     this.props.navigation.navigate('Login');
   };
 

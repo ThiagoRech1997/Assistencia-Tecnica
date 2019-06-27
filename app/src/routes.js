@@ -3,6 +3,8 @@ import { createDrawerNavigator, createStackNavigator, createAppContainer } from 
 import MainScreen from "./pages/Main";
 import LoginScreen from "./pages/Login";
 import CadastroScreen from "./pages/Cadastro";
+import OrcamentoScreen from "./pages/Orcamentos";
+import ServicoScreen from "./pages/Servicos";
 
 const DrowerConfig = {
     drawerPosition: "left",
@@ -12,8 +14,10 @@ const DrowerConfig = {
 
 const Rotas = createDrawerNavigator(
     {
-        Login:{ screen: LoginScreen},
+        Login:{ screen: LoginScreen },
         Main: { screen: MainScreen },
+        Orcamentos: { screen: OrcamentoScreen },
+        Servicos: { screen: ServicoScreen },
         Cadastro: { screen: CadastroScreen },
     },
     DrowerConfig

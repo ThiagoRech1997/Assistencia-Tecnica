@@ -1,5 +1,6 @@
 import React , { Component } from "react";
-import { View, Text, FlatList, StyleSheet, Button } from "react-native";
+import { View, Text, FlatList, Button } from "react-native";
+import styles from './styles';
 import api from "../../services/api";
 import './../../routes';
 
@@ -55,23 +56,3 @@ export default class Main extends Component {
     }
   }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fafafa",
-  },
-  lista: {
-    padding: 20
-  },
-  clienteContainer: {
-    backgroundColor: "#FFF",
-    borderWidth: 1,
-    borderColor: "#DDD",
-    borderRadius: 5,
-    padding: 20,
-    marginBottom: 20
-  },
-  headerMenu: {
-    backgroundColor: "#DA552F"
-  },
-});

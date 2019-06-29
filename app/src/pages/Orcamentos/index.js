@@ -14,25 +14,7 @@ import styles from './styles';
 export default class Orcamentos extends Component {
   state = {
     orcamentos: [],
-    descricao: '',
-    itens: {
-      descricao: '',
-      quantidade: '',
-      valor: '',
-      funcionario: {
-        nome: '',
-        email: '',
-      },
-      cliente: {
-        nome: '',
-        email: '',
-      },
-    },
   };  
-
-  autorizarOrcamento = async () => {
-    const response = await api.put('/orcamentos', {});
-  };
 
   renderItem = ({item}) => (
     <View>
@@ -43,7 +25,7 @@ export default class Orcamentos extends Component {
       <Text>{item.cliente.nome}</Text>
       <Text>{item.funcionario.nome}</Text>
       <Text>{item.aprovacao}</Text>
-      <Button onPress={this.autorizarOrcamento} title='Autorizar' />
+      <Button onPress={() => {this.props.navigation.navigate('AprovaOrcamento', { aprovar: item })}} title='Autorizar' />
     </View>
   );
 

@@ -6,7 +6,8 @@ import {
   View,
   FlatList, 
   Text,
-  Button, 
+  Button,
+  TouchableOpacity, 
 } from 'react-native';
 
 import styles from './styles';
@@ -14,10 +15,11 @@ import styles from './styles';
 export default class Orcamentos extends Component {
   state = {
     orcamentos: [],
+    visible: Boolean
   };  
 
   renderItem = ({item}) => (
-    <View>
+    <View style={styles.listContainer}>
       <Text>{item.descricao}</Text>
       <Text>{item.itens.descricao}</Text>
       <Text>{item.itens.quantidade}</Text>
@@ -25,7 +27,10 @@ export default class Orcamentos extends Component {
       <Text>{item.cliente.nome}</Text>
       <Text>{item.funcionario.nome}</Text>
       <Text>{item.aprovacao}</Text>
-      <Button onPress={() => {this.props.navigation.navigate('AprovaOrcamento', { aprovar: item })}} title='Autorizar' />
+      {!!(item.aprovacao == "Aguardando")?this.visible=false : this.visible = true}
+      <TouchableOpacity style={styles.buttonStyle} disabled={this.visible} onPress={() => {this.props.navigation.navigate('AprovaOrcamento', { aprovar: item })}}>
+        <Text style={styles.buttonText}>Autorizar</Text>
+      </TouchableOpacity>
     </View>
   );
 
@@ -40,7 +45,7 @@ export default class Orcamentos extends Component {
 
   render() {
     return (
-    <View>
+    <View style={styles.container}>
       <FlatList 
       style={styles.lista}
       data={this.state.orcamentos}

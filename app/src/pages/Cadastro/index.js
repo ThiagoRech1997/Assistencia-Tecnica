@@ -7,7 +7,7 @@ import {
   View,
   Text,
   TextInput,
-  Button,
+  TouchableOpacity,
 } from 'react-native';
 
 import styles from './styles';
@@ -79,42 +79,46 @@ export default class Cadastro extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Nome Completo</Text>
-        <TextInput
-          placeholder="Nome"
-          onChangeText={(nome) => this.setState({nome})} 
-          value={this.state.nome}
-          textContentType="name"
-        />
-        <Text>CPF</Text>
-        <TextInput
-          placeholder="CPF"
-          onChangeText={(cpf) => this.setState({cpf})}
-          value={this.state.cpf}
-          textContentType="none"
-        />
-        <Text>E-mail</Text>
-        <TextInput 
-          placeholder="E-mail"
-          onChangeText={(email) => this.setState({email})}
-          value={this.state.email}
-          textContentType="emailAddress"
-        />
-        <Text>Telefone</Text>
-        <TextInput
-          placeholder="Telefone"
-          onChangeText={(telefone) => this.setState({telefone})}
-          value={this.state.telefone}
-          textContentType="telephoneNumber"
-        />
-        <Text>Senha</Text>
-        <TextInput 
-          placeholder="Password"
-          onChangeText={(senha) => this.setState({senha})}
-          secureTextEntry={true}
-          textContentType="password"
-        />
-        <Button onPress={ this.cadastrar } title="Cadastrar" />
+        <View style={styles.listContainer}>
+          <Text>Nome Completo</Text>
+          <TextInput
+            placeholder="Nome"
+            onChangeText={(nome) => this.setState({nome})} 
+            value={this.state.nome}
+            textContentType="name"
+          />
+          <Text>CPF</Text>
+          <TextInput
+            placeholder="CPF"
+            onChangeText={(cpf) => this.setState({cpf})}
+            value={this.state.cpf}
+            textContentType="none"
+          />
+          <Text>E-mail</Text>
+          <TextInput 
+            placeholder="E-mail"
+            onChangeText={(email) => this.setState({email})}
+            value={this.state.email}
+            textContentType="emailAddress"
+          />
+          <Text>Telefone</Text>
+          <TextInput
+            placeholder="Telefone"
+            onChangeText={(telefone) => this.setState({telefone})}
+            value={this.state.telefone}
+            textContentType="telephoneNumber"
+          />
+          <Text>Senha</Text>
+          <TextInput 
+            placeholder="Password"
+            onChangeText={(senha) => this.setState({senha})}
+            secureTextEntry={true}
+            textContentType="password"
+          />
+          <TouchableOpacity style={styles.buttonStyle} onPress={ this.cadastrar }>
+            <Text style={styles.buttonText}>Cadastrar</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }

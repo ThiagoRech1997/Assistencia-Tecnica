@@ -8,7 +8,8 @@ import {
   TextInput,
   View,
   Button,
-  Alert
+  Alert,
+  TouchableOpacity
 } from 'react-native';
 
 import styles from './styles';
@@ -73,33 +74,42 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
-        { !!this.state.loggedInUser && <Text>{ this.state.loggedInUser }</Text> }
-        { !!this.state.errorMessage && <Text>{ this.state.errorMessage }</Text> }
-        { this.state.loggedInUser 
-          ? <View>
-              <Button onPress={ this.menu } title="Inicio" />
-              <Button onPress={ this.signOut } title="Sair" />
-            </View>
-          : <View>
-              <TextInput 
-                style={styles.textImput}
-                placeholder="E-mail"
-                onChangeText={(email) => this.setState({email})}
-                value={this.state.email}
-                textContentType="emailAddress"
-              />
-              <TextInput 
-                style={styles.textImput} 
-                placeholder="Password"
-                onChangeText={(senha) => this.setState({senha})}
-                secureTextEntry={true}
-                textContentType="password"
-              />
-              <Button onPress={ this.signIn } title="Entrar" />
-              
-              <Button onPress={ this.cadastro } title="Cadastrar-se" />
-            </View> 
-        }
+        <View style={styles.listContainer}>
+          { !!this.state.loggedInUser && <Text style={styles.nameUser}>{ this.state.loggedInUser }</Text> }
+          { !!this.state.errorMessage && <Text>{ this.state.errorMessage }</Text> }
+          { this.state.loggedInUser 
+            ? <View>
+                <TouchableOpacity style={styles.buttonStyle} onPress={ this.menu }>
+                  <Text style={styles.buttonText}>Inicio</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonStyle} onPress={ this.signOut }>
+                  <Text style={styles.buttonText}>Sair</Text>
+                </TouchableOpacity>
+              </View>
+            : <View>
+                <TextInput 
+                  style={styles.textImput}
+                  placeholder="E-mail"
+                  onChangeText={(email) => this.setState({email})}
+                  value={this.state.email}
+                  textContentType="emailAddress"
+                />
+                <TextInput 
+                  style={styles.textImput} 
+                  placeholder="Password"
+                  onChangeText={(senha) => this.setState({senha})}
+                  secureTextEntry={true}
+                  textContentType="password"
+                />
+                <TouchableOpacity style={styles.buttonStyle} onPress={ this.signIn }>
+                  <Text style={styles.buttonText}>Entrar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonStyle} onPress={ this.cadastro }>
+                  <Text style={styles.buttonText}>Cadastrar-se</Text>
+                </TouchableOpacity>
+              </View> 
+          }
+        </View>
       </View>
     );
   }

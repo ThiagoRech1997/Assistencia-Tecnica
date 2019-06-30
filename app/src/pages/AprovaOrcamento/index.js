@@ -13,23 +13,34 @@ import {
 import styles from './styles';
 
 const AprovaOrcamento = ({navigation}) =>(
-    <View>
-        <Text>Deseja autorizar o orcamento?</Text>
+    <View style={styles.container}>
+        <Text style={styles.textMessage}>Deseja autorizar o orcamento?</Text>
         <TouchableOpacity 
-        onPress={async () => {
-            var id = navigation.state.params.aprovar._id;
-            const response = await api.put(`/orcamentos/aprovacao/${id}`,{ aprovacao: 'Aprovado' });
-            AprovaOrcamento.abrirServico({navigation});
-            navigation.navigate('Orcamentos');
-        }}>
-        <Text>Sim</Text>
+            style={styles.buttonStyle}
+            onPress={async () => {
+                var id = navigation.state.params.aprovar._id;
+                const response = await api.put(`/orcamentos/aprovacao/${id}`,{ aprovacao: 'Aprovado' });
+                AprovaOrcamento.abrirServico({navigation});
+                navigation.navigate('Orcamentos');
+                }
+            }
+        >
+            <Text style={styles.buttonText}>Sim</Text>
         </TouchableOpacity>
-        <Button onPress={async () => {
-            var id = navigation.state.params.aprovar._id;
-            const response = await api.put(`/orcamentos/aprovacao/${id}`,{ aprovacao: 'Nao Aprovado' });
-            navigation.navigate('Orcamentos');
-        }} title='Nao'/>
-        <Button onPress={() => {navigation.navigate('Orcamentos')}} title='Cancelar'/>
+        <TouchableOpacity 
+            style={styles.buttonStyle}
+            onPress={async () => {
+                var id = navigation.state.params.aprovar._id;
+                const response = await api.put(`/orcamentos/aprovacao/${id}`,{ aprovacao: 'Nao Aprovado' });
+                navigation.navigate('Orcamentos');
+                }
+            }
+        >
+            <Text style={styles.buttonText}>Nao</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonStyle} onPress={() => {navigation.navigate('Orcamentos')}}>
+            <Text style={styles.buttonText}>Cancelar</Text>
+        </TouchableOpacity>
     </View>
 );
 

@@ -15,7 +15,7 @@ export default class Servicos extends Component {
   };
 
   renderItem = ({item}) => (
-    <View>
+    <View style={styles.listContainer}>
       <Text>{item.descricao}</Text>
       <Text>{item.itens.descricao}</Text>
       <Text>{item.itens.quantidade}</Text>

@@ -55,6 +55,9 @@ export default class Orcamentos extends Component {
   render() {
     return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.buttonStyle} onPress={ () => {this.props.navigation.toggleDrawer()} }>
+        <Text style={styles.buttonText}>Menu</Text>
+      </TouchableOpacity>
       <FlatList 
       style={styles.lista}
       data={this.state.orcamentos}

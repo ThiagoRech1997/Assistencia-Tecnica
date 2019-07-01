@@ -75,8 +75,26 @@ exports.put = (req, res, next) => {
       });
     });
 };
+exports.atualiza = (req, res, next) => {
+  Servicos.findOneAndUpdate(req.params.id, {
+    $set: {
+      status: req.body.status
+    }
+  })
+    .then(x => {
+      res.status(201).send({
+        message: "Atualizado com sucesso"
+      });
+    })
+    .catch(e => {
+      res.status(400).send({
+        message: "Falha ao atualizar",
+        data: e
+      });
+    });
+};
 exports.delete = (req, res, next) => {
-  Clientes.findOneAndRemove(req.body.id)
+  Servicos.findOneAndRemove(req.body.id)
     .then(x => {
       res.status(200).send({
         message: "Removido com sucesso"

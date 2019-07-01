@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { create } from 'apisauce';
 
 const api = create({
-    baseURL: "http://192.168.0.111:3050",
+    baseURL: "http://172.27.7.143:3050",
     //http://172.27.6.111:3050
 });
 

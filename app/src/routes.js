@@ -9,7 +9,7 @@ import ServicoScreen from "./pages/Servicos";
 
 const DrowerConfig = {
     drawerPosition: "left",
-    initialRouteName: "Main",
+    initialRouteName: "Login",
     drawerWidth: 200,
 };
 

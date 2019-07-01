@@ -5,6 +5,7 @@ import {
   View,
   Text, 
   FlatList,
+  TouchableOpacity,
 } from 'react-native';
 
 import styles from './styles';
@@ -39,6 +40,9 @@ export default class Servicos extends Component {
   render() {
     return (
       <View>
+        <TouchableOpacity style={styles.buttonStyle} onPress={ () => {this.props.navigation.toggleDrawer()} }>
+          <Text style={styles.buttonText}>Menu</Text>
+        </TouchableOpacity>
         <FlatList 
           style={styles.lista}
           data={this.state.servicos}

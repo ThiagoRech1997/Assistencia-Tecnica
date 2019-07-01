@@ -11,6 +11,22 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         padding: 20,
         marginBottom: 20
-    },
+    },    
+    buttonStyle: {
+        height: 42,
+        borderRadius: 5,
+        borderWidth: 2,
+        borderColor: "#DA552F",
+        backgroundColor: "transparent",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 5,
+        
+      },
+      buttonText: {
+          fontSize: 16,
+          color: "#FA552F",
+          fontWeight: "bold",
+      },
 });
 export default styles;

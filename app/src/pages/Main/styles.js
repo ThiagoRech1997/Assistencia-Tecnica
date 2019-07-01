@@ -19,5 +19,21 @@ const styles = StyleSheet.create({
     headerMenu: {
       backgroundColor: "#DA552F"
     },
+    buttonStyle: {
+      height: 42,
+      borderRadius: 5,
+      borderWidth: 2,
+      borderColor: "#DA552F",
+      backgroundColor: "transparent",
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: 5,
+      
+    },
+    buttonText: {
+        fontSize: 16,
+        color: "#FA552F",
+        fontWeight: "bold",
+    },
 });
 export default styles;

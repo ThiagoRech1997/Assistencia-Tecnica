@@ -16,14 +16,14 @@ export default class Servicos extends Component {
 
   renderItem = ({item}) => (
     <View style={styles.listContainer}>
-      <Text>{item.descricao}</Text>
+      <Text style={{fontSize:18, fontWeight: 'bold'}}>{item.descricao}</Text>
+        <Text style={{fontSize:16}}>Itens:</Text>
       <Text>{item.itens.descricao}</Text>
-      <Text>{item.itens.quantidade}</Text>
-      <Text>{item.itens.valor}</Text>
-      <Text>{item.cliente.nome}</Text>
-      <Text>{item.funcionario.nome}</Text>
-      <Text>{item.valor}</Text>
-      <Text>{item.status}</Text>
+      <Text>Units: {item.itens.quantidade}  R${item.itens.valor}</Text>
+      <Text>Cliente: {item.cliente.nome}</Text>
+      <Text>Funcionario: {item.funcionario.nome}</Text>
+      <Text>Valor: R${item.valor}</Text>
+      <Text>Status: {item.status}</Text>
     </View>
   );
 

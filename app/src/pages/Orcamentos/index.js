@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import api from "../../services/api";
 import './../../routes';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import { 
   View,
   FlatList, 
   Text,
-  Button,
   TouchableOpacity, 
 } from 'react-native';
 
@@ -15,22 +15,31 @@ import styles from './styles';
 export default class Orcamentos extends Component {
   state = {
     orcamentos: [],
-    visible: Boolean
+    visible: Boolean,
+    email: '',
   };  
 
+  getEmail = async () => {
+    var uEmail = JSON.parse(await AsyncStorage.getItem('@CodeApi:email'));
+    this.setState({ email: uEmail })
+    console.log(this.state.email);
+  };
+
   renderItem = ({item}) => (
-    <View style={styles.listContainer}>
-      <Text>{item.descricao}</Text>
-      <Text>{item.itens.descricao}</Text>
-      <Text>{item.itens.quantidade}</Text>
-      <Text>{item.itens.valor}</Text>
-      <Text>{item.cliente.nome}</Text>
-      <Text>{item.funcionario.nome}</Text>
-      <Text>{item.aprovacao}</Text>
-      {!!(item.aprovacao == "Aguardando")?this.visible=false : this.visible = true}
-      <TouchableOpacity style={styles.buttonStyle} disabled={this.visible} onPress={() => {this.props.navigation.navigate('AprovaOrcamento', { aprovar: item })}}>
-        <Text style={styles.buttonText}>Autorizar</Text>
-      </TouchableOpacity>
+    <View>
+      <View style={styles.listContainer}>
+        <Text style={{fontSize:18, fontWeight: 'bold'}}>{item.descricao}</Text>
+        <Text style={{fontSize:16}}>Itens:</Text>
+        <Text>{item.itens.descricao}</Text>
+        <Text>Units: {item.itens.quantidade}  R${item.itens.valor}</Text>
+        <Text>Cliente: {item.cliente.nome}</Text>
+        <Text>Funcionario: {item.funcionario.nome}</Text>
+        <Text>Aprovacao: {item.aprovacao}</Text>
+        {!!(item.aprovacao == "Aguardando")?this.visible=false : this.visible = true}
+        <TouchableOpacity style={styles.buttonStyle} disabled={this.visible} onPress={() => {this.props.navigation.navigate('AprovaOrcamento', { aprovar: item })}}>
+          <Text style={styles.buttonText}>Autorizar</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 

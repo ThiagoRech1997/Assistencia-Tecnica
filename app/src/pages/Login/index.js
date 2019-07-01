@@ -7,7 +7,6 @@ import {
   Text,
   TextInput,
   View,
-  Button,
   Alert,
   TouchableOpacity
 } from 'react-native';
@@ -39,6 +38,7 @@ export default class Login extends Component {
       await AsyncStorage.multiSet([
         ['@CodeApi:token', response.data.token],
         ['@CodeApi:nome', JSON.stringify(response.data.nome)],
+        ['@CodeApi:email', JSON.stringify(response.data.email)],
       ]);
 
       this.setState({ loggedInUser: response.data.nome }); 

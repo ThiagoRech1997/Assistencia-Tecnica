@@ -1,13 +1,8 @@
-### Caracteristicas do problema
-A aplicação devera informar os status do procedimento de reparo, notificando o cliente sempre que há alguma alteração.
-
 ### Requisitos do sistema
 
 #### Para API
  - Cadastrar previamente o cliente
  - Cadastrar Orden de Serviço
- - Após registro da ordem enviar credenciais por e-mail
- - A cada atualização do processo de matutenção ou orçamento enviar uma notificação para o cliente
  - Solicitar aprovação do cliente para o orcamento
 
 #### Para APP
@@ -26,8 +21,7 @@ Clientes:
       "cpf": String,
       "telefone": String,
       "email": String,
-      "usuario": String,
-      "senha": String
+      "cadastroDat": Date
     }
 Funcionários:
 
@@ -36,8 +30,7 @@ Funcionários:
       "cpf": String,
       "telefone": String,
       "email": String,
-      "usuario": String,
-      "senha": String
+      "cadastroDat": Date
     }    
 Serviços:
 
@@ -48,13 +41,20 @@ Serviços:
         "quantidade": number,
         "valor": number
       },
-      "cliente": String,
-      "funcionario": String,
-      "dataEmicao": date,
+      cliente: {
+        "nome": String,
+        "email": String
+      },
+      funcionario: {
+        "nome": String,
+        "email": String
+      },
+      "dataEmicao": Date,
       "valor": number,
-      "status": String
+      "status": String,
+      "cadastroDat": Date
     }
-Orçamento:
+Orçamento: 
 
 	orcamento{
       "descricao": String,
@@ -63,7 +63,24 @@ Orçamento:
         "quantidade": number,
         "valor": number
       },
-      "cliente": String,
-      "funcionario": String,
-      "aprovacao": boolean
+      cliente: {
+        "nome": String,
+        "email": String
+      },
+      funcionario: {
+        "nome": String,
+        "email": String
+      },
+      "aprovacao": String,
+      "cadastroDat": Date
     }
+Usuarios:
+
+	users{
+  	"nome": String,
+     "email": String,
+     "senha": String,
+     "tipo": String,
+     "cadastroDat": Date
+    }
+ 

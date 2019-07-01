@@ -47,7 +47,8 @@ levantamento das necessidades
  - Aprovar o orçamento
 
 
-**Para mais detalhes './Estudo de Caso/analise do problema.md'**
+**Para mais detalhes [a relative link](/Estudo de Caso/analise do problema.md)**
+
 
 ## Uso do Projeto:
 **Instalacao do NodeJS e do NPM**

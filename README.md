@@ -105,7 +105,7 @@ Orçamento:
         "nome": String,
         "email": String
       },
-      "aprovacao": boolean,
+      "aprovacao": String,
       "cadastroDat": Date
     }
 Usuarios:
@@ -117,3 +117,21 @@ Usuarios:
      "tipo": String,
      "cadastroDat": Date
     }
+    
+## Uso do Projeto:
+**Instalacao do NodeJS e do NPM**
+- Acesse https://nodejs.org;
+- Instale o NodeJS comforme instruçoes.
+
+**Instalacao do MongoDB**
+- Acesse https://www.mongodb.com/ para baixar o MongoDB, siga as instrucoes para o download.
+- Instale o MongoDB conforme instrucoes.
+
+**Instalacao do Projeto**
+- Clone do Projeto -> git clone https://github.com/ThiagoRech.1997/Assistencia-Tecnica.git .
+- Instale as dependencias das pastas API e APP.
+- Entre em cada uma delas e execute o comando: 'npm install'.
+ 
+**Configurando APP para uso**
+- Edite o endereco IP da API para o endereco do seu servidor no arquivo './src/services/api.js'.
+- Inicie o aplicativo com o comando 'react-native run-android|ios'.

@@ -47,16 +47,16 @@ levantamento das necessidades
  - Aprovar o orçamento
 
 
-**Para mais detalhes [a workaround link](/Estudo de Caso/analise do problema.md)**
+**Para mais detalhes <a href='https://github.com/ThiagoRech1997/Assistencia-Tecnica/blob/master/Estudo%20de%20Caso/analise%20do%20problema.md'>Análize do Projeto</a>**
 
 
 ## Uso do Projeto:
 **Instalacao do NodeJS e do NPM**
-- Acesse https://nodejs.org;
+- Acesse <a href='https://nodejs.org'>NodeJS</a>;
 - Instale o NodeJS comforme instruçoes.
 
 **Instalacao do MongoDB**
-- Acesse https://www.mongodb.com/ para baixar o MongoDB, siga as instrucoes para o download.
+- Acesse <a href='https://www.mongodb.com/'>MongoDB</a> para baixar o MongoDB, siga as instrucoes para o download.
 - Instale o MongoDB conforme instrucoes.
 
 **Instalacao do Projeto**

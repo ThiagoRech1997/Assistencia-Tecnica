@@ -49,6 +49,7 @@ levantamento das necessidades
 
 **Para mais detalhes <a href='https://github.com/ThiagoRech1997/Assistencia-Tecnica/blob/master/Estudo%20de%20Caso/analise%20do%20problema.md'>Análize do Projeto</a>**
 
+**Para ver capturas de tela do aplicativo mobile <a href='https://github.com/ThiagoRech1997/Assistencia-Tecnica/blob/master/Estudo%20de%20Caso/Screenshots.md'>Screenshots</a>**
 
 ## Uso do Projeto:
 **Instalacao do NodeJS e do NPM**

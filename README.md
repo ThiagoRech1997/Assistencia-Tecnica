@@ -71,5 +71,5 @@ levantamento das necessidades
 
 
 ## Desenvolvido por Thiago Fernando Rech
-<h2>Github:</h2> https://github.com/ThiagoRech.1997
-<h2>E-mail</h2> thiagorech.1997@gmail.com
+<strong>Github:</strong> https://github.com/ThiagoRech.1997
+<strong>E-mail</strong> thiagorech.1997@gmail.com

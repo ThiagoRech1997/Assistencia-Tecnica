@@ -68,3 +68,8 @@ levantamento das necessidades
 **Configurando APP para uso**
 - Edite o endereco IP da API para o endereco do seu servidor no arquivo './src/services/api.js'.
 - Inicie o aplicativo com o comando 'react-native run-android|ios'.
+
+
+## Desenvolvido por Thiago Fernando Rech
+<h2>Github:</h2> https://github.com/ThiagoRech.1997
+<h2>E-mail</h2> thiagorech.1997@gmail.com

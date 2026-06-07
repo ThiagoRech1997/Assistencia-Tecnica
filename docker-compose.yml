@@ -16,18 +16,18 @@ services:
     depends_on:
       - mongodb
 
-  front:
-    image: "api-front"
-    build: ./front
-    container_name: "React"
-    command: yarn start
+  web:
+    image: "assistencia-web"
+    build: ./web
+    container_name: "Web"
     restart: always
     ports:
       - "3000:3000"
-    volumes:
-      - ./front:/usr/app
-    links:
-      - api
+    environment:
+      # A API é acessada server-side (BFF). Dentro da rede do compose, o host é o
+      # nome do serviço "api". Defina SESSION_SECRET no seu .env (ou ambiente).
+      - API_URL=http://api:3050
+      - SESSION_SECRET=${SESSION_SECRET:-troque-este-segredo-em-producao}
     depends_on:
       - api
 

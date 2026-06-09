@@ -62,10 +62,10 @@ flutter run
 flutter test
 ```
 
-## Melhorias pendentes (herdadas do contrato da API)
+## Contrato da API
 
-- A listagem de orçamentos/serviços é filtrada por cliente **no app**
-  (`*Service.doCliente`). O ideal é a API filtrar pelo usuário autenticado —
-  hoje todos os registros trafegam para o dispositivo.
-- A API tem rotas de `/users` sem proteção e o segredo JWT versionado; ver a
-  avaliação da API para o plano de endurecimento.
+- A listagem de orçamentos/serviços é **escopada pelo servidor**: um token de
+  cliente recebe apenas os próprios registros (o app não filtra mais por
+  e-mail localmente). Tokens de equipe (`Funcionario`) recebem tudo.
+- O token JWT carrega `id`, `email` e `tipo`; o segredo e a URI do Mongo da API
+  vêm de variáveis de ambiente (`JWT_SECRET`, `MONGO_URL`).

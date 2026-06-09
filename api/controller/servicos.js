@@ -25,7 +25,10 @@ exports.post = (req, res) => {
   });
 };
 exports.get = (req, res) => {
-  Servicos.find({})
+  // Clientes só enxergam os próprios serviços; equipe (Funcionario) vê todos.
+  const ehCliente = (req.userTipo || "").toLowerCase() === "cliente";
+  const filtro = ehCliente ? { "cliente.email": req.userEmail } : {};
+  Servicos.find(filtro)
     .then(data => {
       res.status(200).send(data);
     })

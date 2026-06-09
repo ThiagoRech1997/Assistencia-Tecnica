@@ -3,9 +3,14 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("./../controller/users");
+const authMiddleware = require("../middlewares/auth");
 
+// Rotas públicas: criação de conta e autenticação.
 router.post("/", controller.post);
 router.post("/auth", controller.autenticacao);
+
+// Demais operações sobre usuários exigem autenticação.
+router.use(authMiddleware);
 router.get("/", controller.get);
 router.get("/:id", controller.getById);
 router.put("/:id", controller.put);

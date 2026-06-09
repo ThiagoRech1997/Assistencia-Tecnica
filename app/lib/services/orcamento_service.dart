@@ -8,19 +8,12 @@ class OrcamentoService {
 
   /// GET /orcamentos
   ///
-  /// NOTA: a API atual retorna todos os orçamentos; a filtragem por cliente
-  /// é feita no app (ver [doCliente]). O ideal seria a API filtrar pelo
-  /// usuário autenticado — fica como melhoria de contrato.
+  /// A API escopa o resultado pelo usuário autenticado: um cliente recebe
+  /// apenas os próprios orçamentos (o filtro por dono é feito no servidor).
   Future<List<Orcamento>> listar() async {
     final data = await _api.get('/orcamentos');
     final list = (data as List).cast<Map<String, dynamic>>();
     return list.map(Orcamento.fromJson).toList();
-  }
-
-  /// Orçamentos do cliente com o e-mail informado.
-  Future<List<Orcamento>> doCliente(String email) async {
-    final todos = await listar();
-    return todos.where((o) => o.cliente.email == email).toList();
   }
 
   /// PUT /orcamentos/aprovacao/:id

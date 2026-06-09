@@ -9,6 +9,11 @@ services:
     restart: always
     ports:
       - "3050:3050"
+    environment:
+      # Dentro da rede do compose o Mongo é acessível pelo nome do serviço.
+      - MONGO_URL=mongodb://mongodb:27017/assistencia-tecnica
+      # Defina JWT_SECRET no seu .env (ou ambiente) — não versione segredos.
+      - JWT_SECRET=${JWT_SECRET:-troque-este-segredo-em-producao}
     volumes:
       - ./api:/usr/api
     links:

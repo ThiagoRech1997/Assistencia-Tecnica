@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import '../core/format.dart';
 import '../models/orcamento.dart';
 import '../services/orcamento_service.dart';
-import '../state/auth_state.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/status_badge.dart';
 
@@ -26,8 +25,8 @@ class _OrcamentosScreenState extends State<OrcamentosScreen> {
   }
 
   Future<List<Orcamento>> _carregar() {
-    final email = context.read<AuthState>().email ?? '';
-    return context.read<OrcamentoService>().doCliente(email);
+    // A API já retorna apenas os orçamentos do cliente autenticado.
+    return context.read<OrcamentoService>().listar();
   }
 
   Future<void> _recarregar() async {

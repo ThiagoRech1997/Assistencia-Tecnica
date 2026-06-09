@@ -7,6 +7,8 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
+var config = require("./config");
+
 // declare routes
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -15,7 +17,7 @@ var funcionarioRoute = require("./routes/funcionarios");
 var servicoRoute = require("./routes/servicos");
 var orcamentoRoute = require("./routes/orcamentos");
 
-mongoose.connect("mongodb://localhost:27017/assistencia-tecnica", {
+mongoose.connect(config.mongoUrl, {
   useNewUrlParser: true
 });
 

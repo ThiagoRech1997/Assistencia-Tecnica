@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import '../core/format.dart';
 import '../models/servico.dart';
 import '../services/servico_service.dart';
-import '../state/auth_state.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/status_badge.dart';
 
@@ -25,8 +24,8 @@ class _ServicosScreenState extends State<ServicosScreen> {
   }
 
   Future<List<Servico>> _carregar() {
-    final email = context.read<AuthState>().email ?? '';
-    return context.read<ServicoService>().doCliente(email);
+    // A API já retorna apenas os serviços do cliente autenticado.
+    return context.read<ServicoService>().listar();
   }
 
   Future<void> _recarregar() async {

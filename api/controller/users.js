@@ -3,10 +3,10 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Users = require("./../models/users");
-const authConfig = require('../config/auth.json');
+const config = require('../config');
 
 function generateToken(params = {}){
-  return jwt.sign(params, authConfig.secret, {
+  return jwt.sign(params, config.jwtSecret, {
     expiresIn: 86408,
   });
 }
@@ -42,8 +42,8 @@ exports.autenticacao = async (req, res, next) => {
 
   res.send({
     nome: users.nome,
-    email, 
-    token: generateToken({ id: users.id }),
+    email,
+    token: generateToken({ id: users.id, email: users.email, tipo: users.tipo }),
     tipo: users.tipo,
   });
 };

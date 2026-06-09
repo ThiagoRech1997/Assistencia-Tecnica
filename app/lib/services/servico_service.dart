@@ -7,17 +7,14 @@ class ServicoService {
 
   final ApiClient _api;
 
-  /// GET /servicos (filtragem por cliente feita no app — ver nota em
-  /// OrcamentoService.listar).
+  /// GET /servicos
+  ///
+  /// A API escopa o resultado pelo usuário autenticado: um cliente recebe
+  /// apenas os próprios serviços (o filtro por dono é feito no servidor).
   Future<List<Servico>> listar() async {
     final data = await _api.get('/servicos');
     final list = (data as List).cast<Map<String, dynamic>>();
     return list.map(Servico.fromJson).toList();
-  }
-
-  Future<List<Servico>> doCliente(String email) async {
-    final todos = await listar();
-    return todos.where((s) => s.cliente.email == email).toList();
   }
 
   /// POST /servicos — abre um serviço a partir de um orçamento aprovado.

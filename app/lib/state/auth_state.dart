@@ -55,8 +55,13 @@ class AuthState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Cadastro de cliente: cria usuário e cliente, sequencialmente (com
-  /// await real — diferente do app antigo, que disparava sem aguardar).
+  /// Cadastro de cliente. A rota POST /clientes exige autenticação, então o
+  /// fluxo é: cria o usuário (rota pública) → autentica para obter o token →
+  /// cria o registro de cliente já autenticado. Ao final, o usuário fica
+  /// logado.
+  ///
+  /// Substitui o workaround do app antigo, que logava num usuário de teste
+  /// fixo (usuario@batata.com) só para conseguir o token.
   Future<void> cadastrar({
     required String nome,
     required String cpf,
@@ -69,6 +74,9 @@ class AuthState extends ChangeNotifier {
       email: email,
       senha: senha,
     );
+    // Autentica com as credenciais recém-criadas (define a sessão e o token
+    // usado pelo interceptor na chamada seguinte).
+    await login(email: email, senha: senha);
     await _authService.cadastrarCliente(
       nome: nome,
       cpf: cpf,

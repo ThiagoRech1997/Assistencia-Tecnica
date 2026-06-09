@@ -44,9 +44,9 @@ class _CadastroScreenState extends State<CadastroScreen> {
           );
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Cadastro realizado! Faça login.')),
+        const SnackBar(content: Text('Cadastro realizado! Bem-vindo(a).')),
       );
-      context.pop();
+      context.go('/');
     } on ApiException catch (e) {
       _erro(e.message);
     } catch (_) {
